@@ -14,20 +14,20 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Apellidos</th>
-          <th>Telefóno</th>
+          <th>Teléfono</th>
           <th>Email</th>
           <th class="actions">Acciones</th>
         </tr>
       </thead>
 
       <tbody>
-  <tr *ngFor="let user of users; trackBy: trackById">
-          <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.lastName }}</td>
-          <td>{{ user.phoneNumber }}</td>
-          <td>{{ user.email }}</td>
-          <td class="actions">
+        <tr *ngFor="let user of users; trackBy: trackById">
+          <td data-label="ID">{{ user.id }}</td>
+          <td data-label="Nombre">{{ user.name }}</td>
+          <td data-label="Apellidos">{{ user.lastName }}</td>
+          <td data-label="Teléfono">{{ user.phoneNumber }}</td>
+          <td data-label="Email">{{ user.email }}</td>
+          <td class="actions" data-label="Acciones">
             <button
               class="btn-danger-outline"
               (click)="openDeleteModal(user)"
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<!-- MODAL ELIMINAR -->
+<!-- MODAL (SIN CAMBIOS) -->
 <div class="modal-overlay" *ngIf="deleteModal">
   <div class="modal-card">
     <h3>Eliminar usuario</h3>
@@ -59,11 +59,14 @@
         Cancelar
       </button>
 
-      
-<button class="btn-danger" (click)="confirmDelete()" [disabled]="loading" type="button">
-  Eliminar
-</button>
-
+      <button
+        class="btn-danger"
+        (click)="confirmDelete()"
+        [disabled]="loading"
+        type="button"
+      >
+        Eliminar
+      </button>
     </div>
   </div>
 </div>
