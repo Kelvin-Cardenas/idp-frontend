@@ -15,6 +15,6 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: '**',
-    renderMode: RenderMode.Server // 👈 OBLIGATORIO
+    renderMode: RenderMode.Server
   }
 ];
