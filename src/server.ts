@@ -1,60 +1,79 @@
-
-import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine, isMainModule } from '@angular/ssr/node';
+import {
+  AngularNodeAppEngine,
+  CommonEngine,
+  createNodeRequestHandler,
+  isMainModule,
+  writeResponseToNodeResponse,
+} from '@angular/ssr/node';
 import express from 'express';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import bootstrap from './main.server';
+import { APP_BASE_HREF } from '@angular/common';
+import { renderApplication } from '@angular/platform-server';
+import fs from 'fs';
+
+
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-const browserDistFolder = resolve(serverDistFolder, '../browser');
-const indexServerHtml = join(serverDistFolder, 'index.server.html');
+const indexHtml = join(serverDistFolder, 'index.server.html');
+
+const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
-const commonEngine = new CommonEngine();
+const angularApp = new AngularNodeAppEngine();
 
-// Evita 304
-app.disable('etag');
+/**
+ * Example Express Rest API endpoints can be defined here.
+ * Uncomment and define endpoints as necessary.
+ *
+ * Example:
+ * ```ts
+ * app.get('/api/{*splat}', (req, res) => {
+ *   // Handle API request
+ * });
+ * ```
+ */
 
-// No cache para HTML
+/**
+ * Serve static files from /browser
+ */
+app.use(
+  express.static(browserDistFolder, {
+    maxAge: '1y',
+    index: 'index.html',
+  }),
+);
+
+/**
+ * Handle all other requests by rendering the Angular application.
+ */
 app.use((req, res, next) => {
-  const accept = req.headers.accept || '';
-  if (typeof accept === 'string' && accept.includes('text/html')) {
-    res.setHeader('Cache-Control', 'no-store');
-  }
-  next();
-});
-
-// Estáticos con cache largo (si tienes hashing en nombres, immutable ayuda)
-app.use(express.static(browserDistFolder, {
-  maxAge: '1y',
-  immutable: true,
-  index: false,
-  redirect: false,
-}));
-
-
-
-app.get('*', (req, res, next) => {
-  const { originalUrl, baseUrl, headers } = req;
-  const proto = (req.headers['x-forwarded-proto'] as string) || req.protocol;
-
-  commonEngine.render({
-    bootstrap,
-    documentFilePath: indexServerHtml,
-    url: `${proto}://${headers.host}${originalUrl}`,
-    publicPath: browserDistFolder,
-    providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
-  })
-  .then(html => res.send(html))
-  .catch(next);
+  angularApp
+    .handle(req)
+    .then((response) =>
+      response ? writeResponseToNodeResponse(response, res) : next(),
+    )
+    .catch(next);
 });
 
 
+/**
+ * Start the server if this module is the main entry point, or it is ran via PM2.
+ * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ */
+if (isMainModule(import.meta.url) || process.env['pm_id']) {
+  const port = process.env['PORT'] || 4000;
+  app.listen(port, (error) => {
+    if (error) {
+      throw error;
+    }
 
-if (isMainModule(import.meta.url)) {
-  const port = process.env['PORT'] || 8080;
-  app.listen(port, () => console.log(`SSR listening on :${port}`));
+    console.log(`Node Express server listening on http://localhost:${port}`);
+  });
 }
 
+/**
+ * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
+ */
 export default app;
