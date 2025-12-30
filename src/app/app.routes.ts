@@ -4,21 +4,7 @@ import { UserCreateComponent } from './features/users/pages/user-create/user-cre
 
 
 export const routes: Routes = [
-  {
-    path: 'users',
-    component: UserListComponent
-  },
-   {
-    path: 'users/create',
-    component: UserCreateComponent
-  },
-  {
-    path: '',
-    redirectTo: 'users',
-    pathMatch: 'full'
-  },
-   {
-    path: '**',
-    redirectTo: 'users'
-  }
+  { path: 'users', component: UserListComponent },
+  { path: 'users/create', component: UserCreateComponent },
+  { path: '', redirectTo: 'users', pathMatch: 'full' }
 ];
