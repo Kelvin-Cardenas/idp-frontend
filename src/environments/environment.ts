@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://localhost:8081/api'
+  apiUrl: 'https://confident-abundance-production-946c.up.railway.app/api'
 };
