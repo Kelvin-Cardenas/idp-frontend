@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
     "dev": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "build:browser": "ng build",
+    "build:server": "ng run frontend:server",
+    "build:ssr": "npm run build:browser && npm run build:server",
     "serve:ssr:frontend": "node dist/frontend/server/server.mjs",
-    "start": "node dist/frontend/server/server.mjs"
+    "start": "npm run serve:ssr:frontend"
   },
   "prettier": {
     "printWidth": 100,
@@ -33,7 +35,7 @@
     "@angular/platform-server": "^21.0.0",
     "@angular/router": "^21.0.0",
     "@angular/ssr": "^21.0.4",
-    "express": "^5.1.0",
+    "express": "^4.22.1",
     "http-proxy-middleware": "^3.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
