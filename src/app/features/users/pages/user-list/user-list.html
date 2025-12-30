@@ -1,0 +1,69 @@
+<div class="page-container">
+  <div class="page-header">
+    <h2 class="page-title">Usuarios IDP</h2>
+
+    <a routerLink="/users/create" class="btn-primary">
+      + Crear usuario
+    </a>
+  </div>
+
+  <div class="table-card">
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Telefóno</th>
+          <th>Email</th>
+          <th class="actions">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+  <tr *ngFor="let user of users; trackBy: trackById">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.email }}</td>
+          <td class="actions">
+            <button
+              class="btn-danger-outline"
+              (click)="openDeleteModal(user)"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="users.length === 0" class="empty-state">
+      No hay usuarios registrados
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ELIMINAR -->
+<div class="modal-overlay" *ngIf="deleteModal">
+  <div class="modal-card">
+    <h3>Eliminar usuario</h3>
+    <p>
+      ¿Seguro que deseas eliminar a
+      <strong>{{ selectedUser?.name }}</strong>?
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn-secondary" (click)="closeDeleteModal()">
+        Cancelar
+      </button>
+
+      
+<button class="btn-danger" (click)="confirmDelete()" [disabled]="loading" type="button">
+  Eliminar
+</button>
+
+    </div>
+  </div>
+</div>

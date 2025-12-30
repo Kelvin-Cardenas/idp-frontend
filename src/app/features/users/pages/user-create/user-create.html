@@ -1,0 +1,69 @@
+<div class="container">
+  <h2>Crear Usuario</h2>
+
+  <form>
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="user.name"
+        name="name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Apellidos</label>
+      <input
+        type="lastName"
+        id="lastName"
+        [(ngModel)]="user.lastName"
+        name="lastName"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Teléfono</label>
+      <input
+        type="phoneNumber"
+        id="phoneNumber"
+        [(ngModel)]="user.phoneNumber"
+        name="phoneNumber"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="user.email"
+        name="email"
+        required
+      />
+    </div>
+
+
+    <!-- 👇 BOTÓN NORMAL -->
+    <button
+      type="button"
+      (click)="save()"
+      [disabled]="loading"
+    >
+      {{ loading ? 'Guardando...' : 'Guardar' }}
+    </button>
+  </form>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" *ngIf="successModal">
+  <div class="modal-card">
+    <h3>Usuario creado</h3>
+    <p>El usuario fue registrado correctamente.</p>
+
+    <button class="btn-primary" (click)="closeModal()">
+      OK
+    </button>
+  </div>
+</div>

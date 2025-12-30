@@ -1,0 +1,174 @@
+.page-container {
+  padding: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* BOTÓN CREAR */
+.btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* TABLA */
+.table-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modern-table th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  padding-bottom: 12px;
+}
+
+.modern-table td {
+  padding: 12px 0;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* ACCIONES */
+.actions {
+  text-align: right;
+}
+
+/* BOTÓN ELIMINAR */
+.btn-danger-outline {
+  background: transparent;
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-danger-outline:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* EMPTY */
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.modal-card p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* ACCIONES MODAL */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* BOTONES MODAL */
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
