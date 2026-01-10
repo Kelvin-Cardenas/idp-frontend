@@ -1,9 +1,9 @@
 <div class="page-container">
   <div class="page-header">
-    <h2 class="page-title">Usuarios IDP</h2>
+    <h2 class="page-title">Inscripciones a Eventos</h2>
 
     <a routerLink="/users/create" class="btn-primary">
-      + Crear usuario
+      + Nueva inscripción
     </a>
   </div>
 
@@ -12,61 +12,36 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Apellidos</th>
+          <th>Evento</th>
+          <th>Fecha</th>
+          <th>Estado civil</th>
+          <th>Participante</th>
+          <th>Documento</th>
           <th>Teléfono</th>
           <th>Email</th>
-          <th class="actions">Acciones</th>
+          <th>Rol</th>
+          <th>Sede</th>
         </tr>
       </thead>
 
       <tbody>
         <tr *ngFor="let user of users; trackBy: trackById">
           <td data-label="ID">{{ user.id }}</td>
-          <td data-label="Nombre">{{ user.name }}</td>
-          <td data-label="Apellidos">{{ user.lastName }}</td>
-          <td data-label="Teléfono">{{ user.phoneNumber }}</td>
+          <td data-label="Evento">{{ user.eventName }}</td>
+          <td data-label="Fecha">{{ user.eventDate }}</td>
+          <td data-label="Estado civil">{{ user.eventLocation }}</td>
+          <td data-label="Participante">{{ user.fullName }}</td>
+          <td data-label="Documento">{{ user.documentNumber }}</td>
+          <td data-label="Teléfono">{{ user.phone }}</td>
           <td data-label="Email">{{ user.email }}</td>
-          <td class="actions" data-label="Acciones">
-            <button
-              class="btn-danger-outline"
-              (click)="openDeleteModal(user)"
-            >
-              Eliminar
-            </button>
-          </td>
+          <td data-label="Rol">{{ user.memberRole }}</td>
+          <td data-label="Sub Sede">{{ user.churchCampus }}</td>
         </tr>
       </tbody>
     </table>
 
     <div *ngIf="users.length === 0" class="empty-state">
-      No hay usuarios registrados
-    </div>
-  </div>
-</div>
-
-<!-- MODAL (SIN CAMBIOS) -->
-<div class="modal-overlay" *ngIf="deleteModal">
-  <div class="modal-card">
-    <h3>Eliminar usuario</h3>
-    <p>
-      ¿Seguro que deseas eliminar a
-      <strong>{{ selectedUser?.name }}</strong>?
-    </p>
-
-    <div class="modal-actions">
-      <button class="btn-secondary" (click)="closeDeleteModal()">
-        Cancelar
-      </button>
-
-      <button
-        class="btn-danger"
-        (click)="confirmDelete()"
-        [disabled]="loading"
-        type="button"
-      >
-        Eliminar
-      </button>
+      No hay inscripciones registradas
     </div>
   </div>
 </div>

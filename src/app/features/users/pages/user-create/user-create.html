@@ -1,69 +1,104 @@
 <div class="container">
-  <h2>Crear Usuario</h2>
+  <h2>Registrar Inscripción</h2>
 
-  <form>
-    <div class="form-group">
-      <label for="name">Nombre</label>
-      <input
-        type="text"
-        id="name"
-        [(ngModel)]="user.name"
-        name="name"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="lastName">Apellidos</label>
-      <input
-        type="lastName"
-        id="lastName"
-        [(ngModel)]="user.lastName"
-        name="lastName"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="phoneNumber">Teléfono</label>
-      <input
-        type="phoneNumber"
-        id="phoneNumber"
-        [(ngModel)]="user.phoneNumber"
-        name="phoneNumber"
-        required
-      />
+  <form class="form-grid">
+    <!-- EVENTO -->
+    <div class="section">
+      <h3>Evento</h3>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Evento</label>
+          <input
+            type="text"
+            [(ngModel)]="user.eventName"
+            name="eventName"
+            readonly
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Fecha</label>
+          <input
+            type="date"
+            [(ngModel)]="user.eventDate"
+            name="eventDate"
+            readonly
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Estado civil</label>
+          <select
+            [(ngModel)]="user.eventLocation"
+            name="eventLocation"
+            (change)="onEstadoCivilChange()"
+            required
+          >
+            <option value="" disabled>Seleccione</option>
+            <option value="SOLTERO">Soltero</option>
+            <option value="CASADO">Casado</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Costo (S/)</label>
+          <input
+            type="number"
+            [(ngModel)]="user.eventCost"
+            name="eventCost"
+            readonly
+          />
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        [(ngModel)]="user.email"
-        name="email"
-        required
-      />
+    <!-- PARTICIPANTE -->
+    <div class="section">
+      <h3>Participante</h3>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" [(ngModel)]="user.fullName" name="fullName" />
+        </div>
+
+        <div class="form-group">
+          <label>Documento</label>
+          <input type="text" [(ngModel)]="user.documentNumber" name="documentNumber" />
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="text" [(ngModel)]="user.phone" name="phone" />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="user.email" name="email" />
+        </div>
+      </div>
     </div>
 
+    <!-- IGLESIA -->
+    <div class="section">
+      <h3>Iglesia</h3>
 
-    <!-- 👇 BOTÓN NORMAL -->
-    <button
-      type="button"
-      (click)="save()"
-      [disabled]="loading"
-    >
-      {{ loading ? 'Guardando...' : 'Guardar' }}
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Rol</label>
+          <input type="text" [(ngModel)]="user.memberRole" name="memberRole" />
+        </div>
+
+        <div class="form-group">
+          <label>Sub sede</label>
+          <input type="text" [(ngModel)]="user.churchCampus" name="churchCampus" />
+        </div>
+      </div>
+    </div>
+
+    <button type="button" (click)="save()" [disabled]="loading">
+      {{ loading ? 'Guardando...' : 'Registrar inscripción' }}
     </button>
   </form>
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" *ngIf="successModal">
-  <div class="modal-card">
-    <h3>Usuario creado</h3>
-    <p>El usuario fue registrado correctamente.</p>
-
-    <button class="btn-primary" (click)="closeModal()">
-      OK
-    </button>
-  </div>
 </div>

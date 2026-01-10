@@ -18,7 +18,20 @@ import { User } from '../../../../core/models/user';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserCreateComponent {
-  user: User = { name: '',lastName:'', phoneNumber:'',email: '' };
+  user: User = { 
+     eventName: 'Congreso nacional Ica',
+  eventDate: '2026-02-08',
+    eventLocation: '',
+    eventCost: 0,
+    fullName: '',
+    documentNumber: '',
+    phone: '',
+    email: '',
+    memberRole: '',
+    churchCampus: '',
+    registrationCode: '',
+    notes: '',
+    paymentStatus: 'PENDIENTE'};
   loading = false;
   successModal = false;
 
@@ -29,7 +42,17 @@ export class UserCreateComponent {
     private zone: NgZone,            // 👈 añade NgZone
   ) {}
 
+  onEstadoCivilChange(): void {
+  if (this.user.eventLocation === 'CASADO') {
+    this.user.eventCost = 450;
+  } else if (this.user.eventLocation === 'SOLTERO') {
+    this.user.eventCost = 250;
+  }
+}
+
   save(): void {
+     this.user.eventName = 'Congreso nacional Ica';
+      this.user.eventDate = '2026-02-08';
     if (this.loading) return;
     this.loading = true;
     // Refleja “Guardando...”
@@ -59,6 +82,7 @@ export class UserCreateComponent {
           });
         }
       });
+     
   }
 
   

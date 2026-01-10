@@ -1,3 +1,7 @@
+/* ========================= */
+/* PAGE */
+/* ========================= */
+
 .page-container {
   padding: 32px;
   max-width: 1100px;
@@ -17,7 +21,10 @@
   color: #1f2937;
 }
 
+/* ========================= */
 /* BOTÓN CREAR */
+/* ========================= */
+
 .btn-primary {
   background-color: #2563eb;
   color: #fff;
@@ -27,6 +34,7 @@
   font-weight: 500;
   text-decoration: none;
   transition: background 0.2s ease, transform 0.1s ease;
+  display: inline-block;
 }
 
 .btn-primary:hover {
@@ -34,7 +42,10 @@
   transform: translateY(-1px);
 }
 
+/* ========================= */
 /* TABLA */
+/* ========================= */
+
 .table-card {
   background: #fff;
   border-radius: 10px;
@@ -62,29 +73,34 @@
   color: #374151;
 }
 
-/* ACCIONES */
-.actions {
-  text-align: right;
+/* ========================= */
+/* BADGES ESTADO DE PAGO */
+/* ========================= */
+
+.badge-paid {
+  background: #dcfce7;
+  color: #166534;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
 }
 
-/* BOTÓN ELIMINAR */
-.btn-danger-outline {
-  background: transparent;
-  color: #dc2626;
-  border: 1px solid #dc2626;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
 }
 
-.btn-danger-outline:hover {
-  background: #dc2626;
-  color: white;
-}
+/* ========================= */
+/* EMPTY STATE */
+/* ========================= */
 
-/* EMPTY */
 .empty-state {
   text-align: center;
   padding: 24px;
@@ -93,109 +109,10 @@
 }
 
 /* ========================= */
-/* MODAL */
-/* ========================= */
-
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-.modal-card {
-  background: white;
-  border-radius: 14px;
-  padding: 24px;
-  width: 100%;
-  max-width: 380px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  animation: fadeIn 0.2s ease;
-}
-
-.modal-card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #1e293b;
-}
-
-.modal-card p {
-  font-size: 14px;
-  color: #475569;
-  margin-bottom: 20px;
-}
-
-/* ACCIONES MODAL */
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-/* BOTONES MODAL */
-.btn-secondary {
-  background: #e5e7eb;
-  color: #374151;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn-danger {
-  background: #dc2626;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn-danger:hover {
-  background: #b91c1c;
-}
-
-/* ANIMACIÓN */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ========================= */
 /* RESPONSIVE MOBILE */
 /* ========================= */
 
 @media (max-width: 768px) {
-   td.actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
-  }
-
-  td.actions::before {
-    align-self: flex-start;
-    margin-bottom: 4px;
-  }
-
-  .btn-danger-outline {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    border-radius: 8px;
-  }
 
   .page-header {
     flex-direction: column;
@@ -208,7 +125,7 @@
     text-align: center;
   }
 
-  /* OCULTAMOS HEADER DE TABLA */
+  /* OCULTAMOS HEADER */
   .modern-table thead {
     display: none;
   }
@@ -237,20 +154,13 @@
     font-size: 14px;
   }
 
-  /* LABELS */
   .modern-table td::before {
     content: attr(data-label);
     font-weight: 600;
     color: #6b7280;
   }
-
-  .actions {
-    justify-content: flex-end;
-  }
-
-  .btn-danger-outline {
-    width: 100%;
-    margin-top: 8px;
-  }
+}
+.modern-table td[data-label="Costo"] {
+  font-weight: 600;
 }
 
