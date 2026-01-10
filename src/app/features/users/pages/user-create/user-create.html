@@ -101,4 +101,12 @@
       {{ loading ? 'Guardando...' : 'Registrar inscripción' }}
     </button>
   </form>
+
+  <!-- MODAL DE ÉXITO -->
+  <div class="modal" *ngIf="successModal">
+    <div class="modal-content">
+      <p>✅ Inscripción registrada correctamente!</p>
+      <button class="modal-btn" (click)="closeModal()">Aceptar</button>
+    </div>
+  </div>
 </div>
