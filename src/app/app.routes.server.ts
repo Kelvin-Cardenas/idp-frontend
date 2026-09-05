@@ -6,11 +6,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender
   },
   {
-    path: 'users',
+    path: 'members',
     renderMode: RenderMode.Server
   },
   {
-    path: 'users/**',
+    path: 'members/**',
     renderMode: RenderMode.Server
   },
   {

@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/core/models/member.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

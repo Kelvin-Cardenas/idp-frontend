@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'https://confident-abundance-production-946c.up.railway.app/api'
+ apiUrl: 'https://master-idp-1.onrender.com/',
+  localUrl:'http://localhost:8080/'
 };
