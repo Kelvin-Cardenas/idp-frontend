@@ -16,6 +16,9 @@ export class MainLayoutComponent implements OnInit {
   members: Member[] = [];
   totalMembers: number = 0;
 
+  // Controla si el menú lateral está abierto
+  sidebarOpen: boolean = false;
+
   constructor(
     private memberService: MemberService
   ) { }
@@ -38,5 +41,15 @@ export class MainLayoutComponent implements OnInit {
         console.error('Error obteniendo miembros:', error);
       }
     });
+  }
+
+  // Abrir/cerrar menú
+  toggleSidebar(): void {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  // Cerrar menú
+  closeSidebar(): void {
+    this.sidebarOpen = false;
   }
 }

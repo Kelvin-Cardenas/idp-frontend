@@ -5,7 +5,7 @@
 /* GRID */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -17,7 +17,7 @@
   padding: 20px;
   position: relative;
   overflow: hidden;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .stat-card:hover {
@@ -59,9 +59,17 @@
   color: var(--gold);
 }
 
-.stat-card.green .stat-number { color: #2ecc71; }
-.stat-card.blue .stat-number { color: #3498db; }
-.stat-card.purple .stat-number { color: #9b59b6; }
+.stat-card.green .stat-number {
+  color: #2ecc71;
+}
+
+.stat-card.blue .stat-number {
+  color: #3498db;
+}
+
+.stat-card.purple .stat-number {
+  color: #9b59b6;
+}
 
 .stat-label {
   font-size: 12px;
@@ -78,4 +86,50 @@
   top: 16px;
   font-size: 26px;
   opacity: 0.15;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+  .dashboard {
+    padding: 12px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+
+  .stat-number {
+    font-size: 26px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .stat-icon {
+    font-size: 24px;
+    right: 14px;
+    top: 14px;
+  }
 }

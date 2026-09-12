@@ -1,38 +1,56 @@
 .layout {
   display: flex;
+  min-height: 100vh;
   height: 100vh;
   background: var(--dark);
+  overflow: hidden;
 }
 
-/* SIDEBAR */
+
+/* =========================
+   SIDEBAR
+========================= */
+
 .sidebar {
   width: 240px;
+  min-width: 240px;
+  height: 100vh;
+
   background: var(--dark2);
   border-right: 1px solid var(--border);
+
   display: flex;
   flex-direction: column;
+
+  transition: transform .3s ease;
+  z-index: 1000;
 }
 
-/* LOGO */
+
+/* =========================
+   LOGO
+========================= */
+
 .sidebar-logo {
   padding: 24px 20px;
+
   border-bottom: 1px solid var(--border);
 
   display: flex;
   flex-direction: row;
+
   align-items: center;
   justify-content: flex-start;
+
   gap: 12px;
 }
 
-/* ICONO */
 .logo-icon {
   font-size: 30px;
   color: var(--gold);
   flex-shrink: 0;
 }
 
-/* TEXTO */
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -42,122 +60,449 @@
 
 .logo-text h2 {
   margin: 0;
+
   font-size: 15px;
+
   font-family: 'Cinzel', serif;
+
   color: var(--gold);
+
   letter-spacing: 1px;
+
   text-align: left;
 }
 
 .logo-text p {
   margin: 0;
+
   font-size: 12px;
+
   color: var(--text-muted);
-  opacity: 0.8;
+
+  opacity: .8;
+
   text-align: left;
 }
 
-/* NAV */
+
+/* =========================
+   NAV
+========================= */
+
 .nav {
   padding: 16px 0;
   flex: 1;
+
+  overflow-y: auto;
 }
 
 .nav-section {
   padding: 10px 20px 5px;
+
   font-size: 10px;
+
   color: var(--text-muted);
+
   letter-spacing: 1px;
+
   text-transform: uppercase;
 }
 
-/* ITEM */
 .nav-item {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
   padding: 10px 20px;
+
   color: var(--text-muted);
+
   text-decoration: none;
+
   transition: all .2s;
+
   border-left: 3px solid transparent;
+
   position: relative;
 }
 
 .nav-item .icon {
   width: 20px;
+
+  min-width: 20px;
+
   text-align: center;
 }
 
 .nav-item .badge {
   margin-left: auto;
+
   background: var(--gold);
+
   color: var(--dark);
+
   font-size: 10px;
+
   padding: 2px 6px;
+
   border-radius: 10px;
 }
 
 .nav-item:hover {
   background: rgba(201,168,76,.08);
+
   color: var(--text);
 }
 
 .nav-item.active {
   color: var(--gold);
+
   background: rgba(201,168,76,.12);
+
   border-left-color: var(--gold);
 }
 
-/* CONTENT */
+
+/* =========================
+   CONTENT
+========================= */
+
 .content {
   flex: 1;
+
+  min-width: 0;
+
   display: flex;
+
   flex-direction: column;
+
+  height: 100vh;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
+
 .header {
   height: 60px;
+
+  min-height: 60px;
+
   border-bottom: 1px solid var(--border);
+
   display: flex;
+
   align-items: center;
+
   padding: 0 20px;
+
   gap: 15px;
 }
 
 .header h1 {
   font-size: 16px;
+
   color: var(--gold);
+
   font-family: 'Cinzel', serif;
+
   flex: 1;
+
   margin: 0;
 }
 
 .header .search {
+  width: 220px;
+
+  max-width: 30vw;
+
   background: var(--dark3);
+
   border: 1px solid var(--border);
+
   border-radius: 8px;
+
   padding: 6px 12px;
+
   color: var(--text);
+
   outline: none;
 }
 
 .header .avatar {
   width: 32px;
+
+  min-width: 32px;
+
   height: 32px;
+
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+
+  background: linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold-light)
+  );
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   color: var(--dark);
+
   font-weight: bold;
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
+
 .main {
   flex: 1;
+
+  min-width: 0;
+
   overflow-y: auto;
+
+  overflow-x: hidden;
+
   padding: 20px;
+}
+
+
+/* =========================
+   HAMBURGER
+========================= */
+
+.menu-button {
+  display: none;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--gold);
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  padding: 5px;
+
+  line-height: 1;
+}
+
+
+/* =========================
+   BOTÓN CERRAR
+========================= */
+
+.close-menu {
+  display: none;
+
+  margin-left: auto;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--text-muted);
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.sidebar-overlay {
+  display: none;
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 210px;
+    min-width: 210px;
+  }
+
+  .header .search {
+    width: 180px;
+  }
+
+}
+
+
+/* ==================================================
+   MÓVIL
+================================================== */
+
+@media (max-width: 700px) {
+
+  .layout {
+    position: relative;
+
+    overflow: hidden;
+  }
+
+
+  /* SIDEBAR OCULTA */
+
+  .sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 250px;
+
+    min-width: 250px;
+
+    height: 100vh;
+
+    transform: translateX(-100%);
+
+    box-shadow: 10px 0 30px rgba(0, 0, 0, .4);
+  }
+
+
+  /* SIDEBAR ABIERTA */
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+
+  /* BOTÓN CERRAR */
+
+  .close-menu {
+    display: block;
+  }
+
+
+  /* OVERLAY */
+
+  .sidebar-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .55);
+
+    z-index: 999;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    display: block;
+
+    transition: opacity .3s ease;
+  }
+
+  .sidebar-overlay.show {
+    opacity: 1;
+
+    pointer-events: auto;
+  }
+
+
+  /* HAMBURGER */
+
+  .menu-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+  }
+
+
+  /* HEADER */
+
+  .header {
+    height: 56px;
+
+    min-height: 56px;
+
+    padding: 0 12px;
+
+    gap: 10px;
+  }
+
+
+  .header h1 {
+    font-size: 15px;
+  }
+
+
+  /* BUSCADOR */
+
+  .header .search {
+    width: 120px;
+
+    max-width: 35vw;
+
+    padding: 6px 8px;
+
+    font-size: 12px;
+  }
+
+
+  /* AVATAR */
+
+  .header .avatar {
+    width: 30px;
+
+    min-width: 30px;
+
+    height: 30px;
+
+    font-size: 12px;
+  }
+
+
+  /* MAIN */
+
+  .main {
+    padding: 12px;
+  }
+
+}
+
+
+/* ==================================================
+   MÓVIL PEQUEÑO
+================================================== */
+
+@media (max-width: 420px) {
+
+  .header .search {
+    width: 90px;
+
+    max-width: 25vw;
+  }
+
+  .header h1 {
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
 }

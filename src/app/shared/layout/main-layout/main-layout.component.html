@@ -1,57 +1,80 @@
 <div class="layout">
 
+  <!-- OVERLAY PARA MÓVIL -->
+  <div class="sidebar-overlay" [class.show]="sidebarOpen" (click)="closeSidebar()">
+  </div>
+
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="sidebar" [class.open]="sidebarOpen">
 
     <div class="sidebar-logo">
+
       <div class="logo-icon">✝</div>
 
       <div class="logo-text">
         <h2>SOFI</h2>
         <p>Sistema De Gestión IDP</p>
       </div>
+
+      <!-- CERRAR EN MÓVIL -->
+      <button class="close-menu" (click)="closeSidebar()" aria-label="Cerrar menú">
+        ✕
+      </button>
+
     </div>
 
     <nav class="nav">
 
       <div class="nav-section">Principal</div>
 
-      <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
         <span class="icon">🏛️</span>
         Dashboard
       </a>
 
       <div class="nav-section">Personas</div>
 
-      <a routerLink="/members" routerLinkActive="active" class="nav-item">
+      <a routerLink="/members" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
         <span class="icon">👥</span>
         Miembros
         <span class="badge">{{ totalMembers }}</span>
       </a>
 
-      <a routerLink="/users" routerLinkActive="active" class="nav-item">
+      <a routerLink="/users" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
         <span class="icon">🔑</span>
         Usuarios
       </a>
 
       <div class="nav-section">Sistema</div>
 
-      <a routerLink="/roles" routerLinkActive="active" class="nav-item">
+      <a routerLink="/roles" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
         <span class="icon">🛡️</span>
         Roles
       </a>
 
     </nav>
+
   </aside>
+
 
   <!-- MAIN -->
   <div class="content">
 
     <header class="header">
+
+      <!-- HAMBURGUESA -->
+      <button class="menu-button" (click)="toggleSidebar()" aria-label="Abrir menú">
+        ☰
+      </button>
+
       <h1>Panel</h1>
+
       <input class="search" placeholder="🔍 Buscar..." />
+
       <div class="avatar">A</div>
+
     </header>
+
 
     <main class="main">
       <router-outlet></router-outlet>

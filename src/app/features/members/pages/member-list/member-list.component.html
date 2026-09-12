@@ -1,66 +1,119 @@
 <div class="members">
+
+  <!-- =====================================================
+       MENSAJE DE ÉXITO
+       ===================================================== -->
   <div class="success-overlay" *ngIf="showSuccess">
 
-  <div class="success-modal">
+    <div class="success-modal">
 
-    <div class="success-icon">
-      ✓
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>¡Miembro creado!</h2>
+
+      <p>{{ successMessage }}</p>
+
     </div>
-
-    <h2>¡Miembro creado!</h2>
-
-    <p>{{ successMessage }}</p>
 
   </div>
 
-</div>
 
-
-  <!-- STATS (FALTANTE EN TU PROYECTO) -->
+  <!-- =====================================================
+       ESTADÍSTICAS
+       ===================================================== -->
   <div class="stats-grid">
 
     <div class="stat-card gold">
+
       <div class="stat-icon">👥</div>
-      <div class="stat-number">{{ totalMembers }}</div>
-      <div class="stat-label">Total Miembros</div>
+
+      <div class="stat-number">
+        {{ totalMembers }}
+      </div>
+
+      <div class="stat-label">
+        Total Miembros
+      </div>
+
     </div>
+
 
     <div class="stat-card green">
+
       <div class="stat-icon">✅</div>
-      <div class="stat-number">{{ activeMembers }}</div>
-      <div class="stat-label">Activos</div>
+
+      <div class="stat-number">
+        {{ activeMembers }}
+      </div>
+
+      <div class="stat-label">
+        Activos
+      </div>
+
     </div>
 
+
     <div class="stat-card blue">
+
       <div class="stat-icon">🆕</div>
-      <div class="stat-number">{{ newMembers }}</div>
-      <div class="stat-label">Nuevos Este Mes</div>
+
+      <div class="stat-number">
+        {{ newMembers }}
+      </div>
+
+      <div class="stat-label">
+        Nuevos Este Mes
+      </div>
+
     </div>
 
   </div>
 
-  <!-- HEADER -->
-  <div class="section-header">
-    <h2>Miembros</h2>
 
-    <button class="btn btn-gold" (click)="showModal = true">
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+  <div class="section-header">
+
+    <h2>
+      Miembros
+    </h2>
+
+    <button
+      type="button"
+      class="btn btn-gold"
+      (click)="showModal = true">
 
       + Nuevo Miembro
 
     </button>
+
   </div>
 
-  <!-- MODAL -->
-  <div class="modal-overlay" *ngIf="showModal">
+
+  <!-- =====================================================
+       MODAL NUEVO MIEMBRO
+       ===================================================== -->
+  <div
+    class="modal-overlay"
+    *ngIf="showModal">
 
     <div class="member-modal">
 
-      <!-- Header -->
+      <!-- HEADER -->
+
       <div class="modal-header">
 
-        <h2>Nuevo Miembro</h2>
+        <h2>
+          Nuevo Miembro
+        </h2>
 
-        <button class="close-btn" (click)="showModal = false">
+        <button
+          type="button"
+          class="close-btn"
+          (click)="showModal = false">
 
           ✕
 
@@ -68,110 +121,311 @@
 
       </div>
 
-      <!-- Formulario -->
+
+      <!-- FORMULARIO -->
+
       <form (ngSubmit)="saveMember()">
+
         <div class="modal-body">
 
           <div class="form-grid">
 
+
+            <!-- NOMBRES -->
+
             <div class="form-group">
-              <label>Nombres</label>
-              <input type="text" name="firstName" [(ngModel)]="member.firstName" placeholder="Ingrese los nombres">
+
+              <label>
+                Nombres
+              </label>
+
+              <input
+                type="text"
+                name="firstName"
+                [(ngModel)]="member.firstName"
+                placeholder="Ingrese los nombres">
+
             </div>
 
+
+            <!-- APELLIDOS -->
+
             <div class="form-group">
-              <label>Apellidos</label>
-              <input type="text" name="lastName" [(ngModel)]="member.lastName" placeholder="Ingrese los apellidos">
+
+              <label>
+                Apellidos
+              </label>
+
+              <input
+                type="text"
+                name="lastName"
+                [(ngModel)]="member.lastName"
+                placeholder="Ingrese los apellidos">
+
             </div>
 
+
+            <!-- DOCUMENTO -->
+
             <div class="form-group">
-              <label>N° Documento</label>
-              <input type="text" name="documentNumber" [(ngModel)]="member.documentNumber" placeholder="12345678">
+
+              <label>
+                N° Documento
+              </label>
+
+              <input
+                type="text"
+                name="documentNumber"
+                [(ngModel)]="member.documentNumber"
+                placeholder="12345678">
+
             </div>
 
+
+            <!-- GENERO -->
+
             <div class="form-group">
-              <label>Género</label>
 
-              <select name="gender" [(ngModel)]="member.gender">
+              <label>
+                Género
+              </label>
 
-                <option value="">Seleccione</option>
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
+              <select
+                name="gender"
+                [(ngModel)]="member.gender">
+
+                <option value="">
+                  Seleccione
+                </option>
+
+                <option value="M">
+                  Masculino
+                </option>
+
+                <option value="F">
+                  Femenino
+                </option>
 
               </select>
 
             </div>
 
-            <div class="form-group">
-              <label>Fecha de Nacimiento</label>
-              <input type="date" name="birthday" [(ngModel)]="member.birthday" (click)="openDatePicker($event)">
-            </div>
+
+            <!-- FECHA NACIMIENTO -->
 
             <div class="form-group">
-              <label>Teléfono</label>
-              <input type="text" name="phoneNumber" [(ngModel)]="member.phoneNumber" placeholder="987654321">
-            </div>
 
-            <div class="form-group full-width">
-              <label>Email</label>
-              <input type="email" name="email" [(ngModel)]="member.email" placeholder="correo@email.com">
-            </div>
+              <label>
+                Fecha de Nacimiento
+              </label>
 
-            <div class="form-group full-width">
-              <label>Dirección</label>
-              <input type="text" name="address" [(ngModel)]="member.address" placeholder="Ingrese la dirección">
-            </div>
-
-            <div class="form-group">
-              <label>Fecha de Conversión</label>
-              <input type="date" name="conversionDate" [(ngModel)]="member.conversionDate"
+              <input
+                type="date"
+                name="birthday"
+                [(ngModel)]="member.birthday"
                 (click)="openDatePicker($event)">
+
             </div>
+
+
+            <!-- TELEFONO -->
 
             <div class="form-group">
-              <label>Fecha de Bautismo</label>
-              <input type="date" name="baptismDate" [(ngModel)]="member.baptismDate" (click)="openDatePicker($event)">
+
+              <label>
+                Teléfono
+              </label>
+
+              <input
+                type="text"
+                name="phoneNumber"
+                [(ngModel)]="member.phoneNumber"
+                placeholder="987654321">
+
             </div>
 
-            <div class="form-group full-width">
-              <label>Iglesia</label>
 
-              <select name="churchId" [(ngModel)]="member.churchId">
-                <option [ngValue]="0">Seleccione una iglesia</option>
-                <option [ngValue]="1">Sede Central</option>
-                <option [ngValue]="2">Sub-sede Huertos</option>
-                <option [ngValue]="3">Sub-sede Quicapata</option>
-                <option [ngValue]="4">Sub-sede P. Libre</option>
-                <option [ngValue]="5">Sub-sede Lima Vitarte</option>
-                <option [ngValue]="6">Sub-sede Lima Agust.</option>
-                <option [ngValue]="7">Sub-sede Rosaspata</option>
-                <option [ngValue]="8">Sub-sede Orccupucquio</option>
-                <option [ngValue]="9">Sub-sede Anchac-huasi</option>
-                <option [ngValue]="10">Sub-sede Manzanayocc</option>
-                <option [ngValue]="11">Sub-sede Ccochapampa</option>
-                <option [ngValue]="12">Sub-sede Chuñyacc</option>
-                <option [ngValue]="13">Sub-sede Llunchi</option>
-                <option [ngValue]="14">Sub-sede Quiswarpampa</option>
-                <option [ngValue]="15">Misión de Tortolla</option>
-                <option [ngValue]="16">Misión Ica</option>
-                <option [ngValue]="17">Misión Mutupi</option>
-                <option [ngValue]="18">Misión EE.UU.</option>
+            <!-- EMAIL -->
+
+            <div class="form-group full-width">
+
+              <label>
+                Email
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                [(ngModel)]="member.email"
+                placeholder="correo@email.com">
+
+            </div>
+
+
+            <!-- DIRECCION -->
+
+            <div class="form-group full-width">
+
+              <label>
+                Dirección
+              </label>
+
+              <input
+                type="text"
+                name="address"
+                [(ngModel)]="member.address"
+                placeholder="Ingrese la dirección">
+
+            </div>
+
+
+            <!-- FECHA CONVERSION -->
+
+            <div class="form-group">
+
+              <label>
+                Fecha de Conversión
+              </label>
+
+              <input
+                type="date"
+                name="conversionDate"
+                [(ngModel)]="member.conversionDate"
+                (click)="openDatePicker($event)">
+
+            </div>
+
+
+            <!-- FECHA BAUTISMO -->
+
+            <div class="form-group">
+
+              <label>
+                Fecha de Bautismo
+              </label>
+
+              <input
+                type="date"
+                name="baptismDate"
+                [(ngModel)]="member.baptismDate"
+                (click)="openDatePicker($event)">
+
+            </div>
+
+
+            <!-- IGLESIA -->
+
+            <div class="form-group full-width">
+
+              <label>
+                Iglesia
+              </label>
+
+              <select
+                name="churchId"
+                [(ngModel)]="member.churchId">
+
+                <option [ngValue]="0">
+                  Seleccione una iglesia
+                </option>
+
+                <option [ngValue]="1">
+                  Sede Central
+                </option>
+
+                <option [ngValue]="2">
+                  Sub-sede Huertos
+                </option>
+
+                <option [ngValue]="3">
+                  Sub-sede Quicapata
+                </option>
+
+                <option [ngValue]="4">
+                  Sub-sede P. Libre
+                </option>
+
+                <option [ngValue]="5">
+                  Sub-sede Lima Vitarte
+                </option>
+
+                <option [ngValue]="6">
+                  Sub-sede Lima Agust.
+                </option>
+
+                <option [ngValue]="7">
+                  Sub-sede Rosaspata
+                </option>
+
+                <option [ngValue]="8">
+                  Sub-sede Orccupucquio
+                </option>
+
+                <option [ngValue]="9">
+                  Sub-sede Anchac-huasi
+                </option>
+
+                <option [ngValue]="10">
+                  Sub-sede Manzanayocc
+                </option>
+
+                <option [ngValue]="11">
+                  Sub-sede Ccochapampa
+                </option>
+
+                <option [ngValue]="12">
+                  Sub-sede Chuñyacc
+                </option>
+
+                <option [ngValue]="13">
+                  Sub-sede Llunchi
+                </option>
+
+                <option [ngValue]="14">
+                  Sub-sede Quiswarpampa
+                </option>
+
+                <option [ngValue]="15">
+                  Misión de Tortolla
+                </option>
+
+                <option [ngValue]="16">
+                  Misión Ica
+                </option>
+
+                <option [ngValue]="17">
+                  Misión Mutupi
+                </option>
+
+                <option [ngValue]="18">
+                  Misión EE.UU.
+                </option>
+
               </select>
+
             </div>
 
           </div>
 
         </div>
 
+
+        <!-- FOOTER -->
+
         <div class="modal-footer">
 
-          <button type="button" class="btn btn-outline" (click)="showModal = false">
+          <button
+            type="button"
+            class="btn btn-outline"
+            (click)="showModal = false">
 
             Cancelar
 
           </button>
 
-          <button type="submit" class="btn btn-gold">
+          <button
+            type="submit"
+            class="btn btn-gold">
 
             Guardar Miembro
 
@@ -185,61 +439,266 @@
 
   </div>
 
-  <!-- TABLE -->
+
+  <!-- =====================================================
+       LISTADO
+       ===================================================== -->
   <div class="table-container">
 
     <div class="table-header">
-      <h3>Listado de Miembros</h3>
+
+      <h3>
+        Listado de Miembros
+      </h3>
+
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Lugar</th>
-          <th>Teléfono</th>
-          <th>Bautizado</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <tr *ngFor="let member of members">
+    <!-- ===================================================
+         DESKTOP / TABLET
+         =================================================== -->
 
-          <td class="name-cell">
+    <div class="desktop-table">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Nombre</th>
+
+            <th>Lugar</th>
+
+            <th>Teléfono</th>
+
+            <th>Bautizado</th>
+
+            <th>Estado</th>
+
+            <th>Acciones</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr *ngFor="let member of members">
+
+            <td class="name-cell">
+
+              <span class="avatar">
+
+                {{ capitalizeWords(member.firstName).charAt(0) }}
+
+              </span>
+
+              <span class="member-name">
+
+                {{ capitalizeWords(member.firstName) }}
+                {{ capitalizeWords(member.lastName) }}
+
+              </span>
+
+            </td>
+
+
+            <td>
+
+              {{ member.church?.name
+                ? capitalizeWords(member.church.name)
+                : 'Sin sede' }}
+
+            </td>
+
+
+            <td>
+
+              {{ member.phoneNumber }}
+
+            </td>
+
+
+            <td>
+
+              {{ member.baptismDate ? '✅ Sí' : '❌ No' }}
+
+            </td>
+
+
+            <td>
+
+              <span
+                class="badge"
+                [ngClass]="member.baptismDate
+                  ? 'badge-active'
+                  : 'badge-inactive'">
+
+                {{ member.baptismDate
+                  ? 'Activo'
+                  : 'Inactivo' }}
+
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <button
+                type="button"
+                class="btn btn-outline btn-sm">
+
+                Ver
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- ===================================================
+         MOBILE
+         =================================================== -->
+
+    <div class="mobile-members">
+
+      <div
+        class="member-card"
+        *ngFor="let member of members">
+
+
+        <!-- CARD HEADER -->
+
+        <div class="member-card-header">
+
+          <div class="member-card-name">
+
             <span class="avatar">
+
               {{ capitalizeWords(member.firstName).charAt(0) }}
+
             </span>
 
-            {{ capitalizeWords(member.firstName) }}
-            {{ capitalizeWords(member.lastName) }}
-          </td>
+            <div>
 
-          <td>
-            {{ member.church?.name ? capitalizeWords(member.church.name) : 'Sin sede' }}
-          </td>
+              <div class="member-name">
 
-          <td>{{ member.phoneNumber }}</td>
+                {{ capitalizeWords(member.firstName) }}
+                {{ capitalizeWords(member.lastName) }}
 
-          <td>
-            {{ member.baptismDate ? '✅ Sí' : '❌ No' }}
-          </td>
+              </div>
 
-          <td>
-            <span class="badge" [ngClass]="member.baptismDate ? 'badge-active' : 'badge-inactive'">
-              {{ member.baptismDate ? 'Activo' : 'Inactivo' }}
+              <span class="member-status">
+
+                {{ member.baptismDate
+                  ? 'Miembro activo'
+                  : 'Miembro inactivo' }}
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <span
+            class="badge"
+            [ngClass]="member.baptismDate
+              ? 'badge-active'
+              : 'badge-inactive'">
+
+            {{ member.baptismDate
+              ? 'Activo'
+              : 'Inactivo' }}
+
+          </span>
+
+        </div>
+
+
+        <!-- CARD INFORMATION -->
+
+        <div class="member-card-info">
+
+
+          <div class="info-item">
+
+            <span class="info-label">
+              Lugar
             </span>
-          </td>
 
-          <td>
-            <button class="btn btn-outline btn-sm">Ver</button>
-          </td>
+            <span class="info-value">
 
-        </tr>
-      </tbody>
+              {{ member.church?.name
+                ? capitalizeWords(member.church.name)
+                : 'Sin sede' }}
 
-    </table>
+            </span>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span class="info-label">
+              Teléfono
+            </span>
+
+            <span class="info-value">
+
+              {{ member.phoneNumber }}
+
+            </span>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span class="info-label">
+              Bautizado
+            </span>
+
+            <span class="info-value">
+
+              {{ member.baptismDate
+                ? '✅ Sí'
+                : '❌ No' }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- CARD FOOTER -->
+
+        <div class="member-card-footer">
+
+          <button
+            type="button"
+            class="btn btn-outline btn-sm">
+
+            Ver detalles
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 

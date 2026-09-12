@@ -1,14 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
 
 :root {
-  --gold: #c9a84c;
-  --dark: #0d0d12;
-  --dark2: #13131c;
-  --dark3: #1a1a28;
-  --panel: #181825;
-  --border: rgba(201,168,76,0.18);
-  --text: #e8e4d8;
-  --text-muted: #8a8570;
+  --primary: #1D4E89;
+  --primary-dark: #15395F;
+  --primary-light: #EDF4FA;
+
+  --gold: #C6A15B;
+  --gold-light: #E5CD98;
+
+  --dark: #F8F6F1;
+  --dark2: #FFFFFF;
+  --dark3: #F1EEE7;
+
+  --text: #24313D;
+  --text-muted: #737A82;
+
+  --border: #E1DDD4;
+
+  --success: #438466;
+  --danger: #C65B5B;
+  --warning: #C79A3B;
 }
 
 body {
