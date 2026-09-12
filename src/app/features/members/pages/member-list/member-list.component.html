@@ -81,10 +81,7 @@
       Miembros
     </h2>
 
-    <button
-      type="button"
-      class="btn btn-gold"
-      (click)="showModal = true">
+    <button type="button" class="btn btn-gold" (click)="showModal = true">
 
       + Nuevo Miembro
 
@@ -96,9 +93,7 @@
   <!-- =====================================================
        MODAL NUEVO MIEMBRO
        ===================================================== -->
-  <div
-    class="modal-overlay"
-    *ngIf="showModal">
+  <div class="modal-overlay" *ngIf="showModal">
 
     <div class="member-modal">
 
@@ -110,10 +105,7 @@
           Nuevo Miembro
         </h2>
 
-        <button
-          type="button"
-          class="close-btn"
-          (click)="showModal = false">
+        <button type="button" class="close-btn" (click)="showModal = false">
 
           ✕
 
@@ -139,11 +131,7 @@
                 Nombres
               </label>
 
-              <input
-                type="text"
-                name="firstName"
-                [(ngModel)]="member.firstName"
-                placeholder="Ingrese los nombres">
+              <input type="text" name="firstName" [(ngModel)]="member.firstName" placeholder="Ingrese los nombres">
 
             </div>
 
@@ -156,11 +144,7 @@
                 Apellidos
               </label>
 
-              <input
-                type="text"
-                name="lastName"
-                [(ngModel)]="member.lastName"
-                placeholder="Ingrese los apellidos">
+              <input type="text" name="lastName" [(ngModel)]="member.lastName" placeholder="Ingrese los apellidos">
 
             </div>
 
@@ -173,11 +157,7 @@
                 N° Documento
               </label>
 
-              <input
-                type="text"
-                name="documentNumber"
-                [(ngModel)]="member.documentNumber"
-                placeholder="12345678">
+              <input type="text" name="documentNumber" [(ngModel)]="member.documentNumber" placeholder="12345678">
 
             </div>
 
@@ -190,9 +170,7 @@
                 Género
               </label>
 
-              <select
-                name="gender"
-                [(ngModel)]="member.gender">
+              <select name="gender" [(ngModel)]="member.gender">
 
                 <option value="">
                   Seleccione
@@ -219,11 +197,7 @@
                 Fecha de Nacimiento
               </label>
 
-              <input
-                type="date"
-                name="birthday"
-                [(ngModel)]="member.birthday"
-                (click)="openDatePicker($event)">
+              <input type="date" name="birthday" [(ngModel)]="member.birthday" (click)="openDatePicker($event)">
 
             </div>
 
@@ -236,11 +210,7 @@
                 Teléfono
               </label>
 
-              <input
-                type="text"
-                name="phoneNumber"
-                [(ngModel)]="member.phoneNumber"
-                placeholder="987654321">
+              <input type="text" name="phoneNumber" [(ngModel)]="member.phoneNumber" placeholder="987654321">
 
             </div>
 
@@ -253,11 +223,7 @@
                 Email
               </label>
 
-              <input
-                type="email"
-                name="email"
-                [(ngModel)]="member.email"
-                placeholder="correo@email.com">
+              <input type="email" name="email" [(ngModel)]="member.email" placeholder="correo@email.com">
 
             </div>
 
@@ -270,11 +236,7 @@
                 Dirección
               </label>
 
-              <input
-                type="text"
-                name="address"
-                [(ngModel)]="member.address"
-                placeholder="Ingrese la dirección">
+              <input type="text" name="address" [(ngModel)]="member.address" placeholder="Ingrese la dirección">
 
             </div>
 
@@ -287,10 +249,7 @@
                 Fecha de Conversión
               </label>
 
-              <input
-                type="date"
-                name="conversionDate"
-                [(ngModel)]="member.conversionDate"
+              <input type="date" name="conversionDate" [(ngModel)]="member.conversionDate"
                 (click)="openDatePicker($event)">
 
             </div>
@@ -304,11 +263,7 @@
                 Fecha de Bautismo
               </label>
 
-              <input
-                type="date"
-                name="baptismDate"
-                [(ngModel)]="member.baptismDate"
-                (click)="openDatePicker($event)">
+              <input type="date" name="baptismDate" [(ngModel)]="member.baptismDate" (click)="openDatePicker($event)">
 
             </div>
 
@@ -321,9 +276,7 @@
                 Iglesia
               </label>
 
-              <select
-                name="churchId"
-                [(ngModel)]="member.churchId">
+              <select name="churchId" [(ngModel)]="member.churchId">
 
                 <option [ngValue]="0">
                   Seleccione una iglesia
@@ -334,75 +287,90 @@
                 </option>
 
                 <option [ngValue]="2">
-                  Sub-sede Huertos
+                  Subsede Huertos
                 </option>
 
                 <option [ngValue]="3">
-                  Sub-sede Quicapata
+                  Subsede Vitarte
                 </option>
 
                 <option [ngValue]="4">
-                  Sub-sede P. Libre
+                  Subsede Pueblo Libre
                 </option>
 
                 <option [ngValue]="5">
-                  Sub-sede Lima Vitarte
+                  Subsede Llunchi
                 </option>
 
                 <option [ngValue]="6">
-                  Sub-sede Lima Agust.
+                  Sede Central
                 </option>
 
                 <option [ngValue]="7">
-                  Sub-sede Rosaspata
+                  Sub-sede Huertos
                 </option>
 
                 <option [ngValue]="8">
-                  Sub-sede Orccupucquio
+                  Sub-sede Quicapata
                 </option>
 
                 <option [ngValue]="9">
-                  Sub-sede Anchac-huasi
+                  Sub-sede P. Libre
                 </option>
 
                 <option [ngValue]="10">
-                  Sub-sede Manzanayocc
+                  Sub-sede Lima Vitarte
                 </option>
 
                 <option [ngValue]="11">
-                  Sub-sede Ccochapampa
+                  Sub-sede Lima Agust.
                 </option>
 
                 <option [ngValue]="12">
-                  Sub-sede Chuñyacc
+                  Sub-sede Rosaspata
                 </option>
 
                 <option [ngValue]="13">
-                  Sub-sede Llunchi
+                  Sub-sede Orccupucquio
                 </option>
 
                 <option [ngValue]="14">
-                  Sub-sede Quiswarpampa
+                  Sub-sede Anchac-huasi
                 </option>
 
                 <option [ngValue]="15">
-                  Misión de Tortolla
+                  Sub-sede Manzanayocc
                 </option>
 
                 <option [ngValue]="16">
-                  Misión Ica
+                  Sub-sede Ccochapampa
                 </option>
 
                 <option [ngValue]="17">
-                  Misión Mutupi
+                  Sub-sede Chuñyacc
                 </option>
 
                 <option [ngValue]="18">
-                  Misión EE.UU.
+                  Sub-sede Llunchi
+                </option>
+
+                <option [ngValue]="19">
+                  Sub-sede Quiswarpampa
+                </option>
+
+                <option [ngValue]="20">
+                  Misión de Tortolla
+                </option>
+
+                <option [ngValue]="21">
+                  Misión Ica
+                </option>
+
+                <option [ngValue]="22">
+                  Misión Mutupi
                 </option>
 
               </select>
-
             </div>
 
           </div>
@@ -414,18 +382,13 @@
 
         <div class="modal-footer">
 
-          <button
-            type="button"
-            class="btn btn-outline"
-            (click)="showModal = false">
+          <button type="button" class="btn btn-outline" (click)="showModal = false">
 
             Cancelar
 
           </button>
 
-          <button
-            type="submit"
-            class="btn btn-gold">
+          <button type="submit" class="btn btn-gold">
 
             Guardar Miembro
 
@@ -508,8 +471,8 @@
             <td>
 
               {{ member.church?.name
-                ? capitalizeWords(member.church.name)
-                : 'Sin sede' }}
+              ? capitalizeWords(member.church.name)
+              : 'Sin sede' }}
 
             </td>
 
@@ -530,15 +493,13 @@
 
             <td>
 
-              <span
-                class="badge"
-                [ngClass]="member.baptismDate
+              <span class="badge" [ngClass]="member.baptismDate
                   ? 'badge-active'
                   : 'badge-inactive'">
 
                 {{ member.baptismDate
-                  ? 'Activo'
-                  : 'Inactivo' }}
+                ? 'Activo'
+                : 'Inactivo' }}
 
               </span>
 
@@ -547,9 +508,7 @@
 
             <td>
 
-              <button
-                type="button"
-                class="btn btn-outline btn-sm">
+              <button type="button" class="btn btn-outline btn-sm">
 
                 Ver
 
@@ -572,9 +531,7 @@
 
     <div class="mobile-members">
 
-      <div
-        class="member-card"
-        *ngFor="let member of members">
+      <div class="member-card" *ngFor="let member of members">
 
 
         <!-- CARD HEADER -->
@@ -601,8 +558,8 @@
               <span class="member-status">
 
                 {{ member.baptismDate
-                  ? 'Miembro activo'
-                  : 'Miembro inactivo' }}
+                ? 'Miembro activo'
+                : 'Miembro inactivo' }}
 
               </span>
 
@@ -611,15 +568,13 @@
           </div>
 
 
-          <span
-            class="badge"
-            [ngClass]="member.baptismDate
+          <span class="badge" [ngClass]="member.baptismDate
               ? 'badge-active'
               : 'badge-inactive'">
 
             {{ member.baptismDate
-              ? 'Activo'
-              : 'Inactivo' }}
+            ? 'Activo'
+            : 'Inactivo' }}
 
           </span>
 
@@ -640,8 +595,8 @@
             <span class="info-value">
 
               {{ member.church?.name
-                ? capitalizeWords(member.church.name)
-                : 'Sin sede' }}
+              ? capitalizeWords(member.church.name)
+              : 'Sin sede' }}
 
             </span>
 
@@ -672,8 +627,8 @@
             <span class="info-value">
 
               {{ member.baptismDate
-                ? '✅ Sí'
-                : '❌ No' }}
+              ? '✅ Sí'
+              : '❌ No' }}
 
             </span>
 
@@ -686,9 +641,7 @@
 
         <div class="member-card-footer">
 
-          <button
-            type="button"
-            class="btn btn-outline btn-sm">
+          <button type="button" class="btn btn-outline btn-sm">
 
             Ver detalles
 
